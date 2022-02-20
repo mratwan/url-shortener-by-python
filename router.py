@@ -1,4 +1,5 @@
 from multiprocessing.spawn import import_main_path
+from os import link
 from flask import Blueprint, redirect, render_template, request
 from extensions import db
 from models import Urls
@@ -28,6 +29,12 @@ def AddLink():
     db.session.commit()
 
     return render_template('addLink.html', long=link.long, short=link.short)
+
+
+@main.route('/links')
+def Links():
+    links = Urls.query.all()
+    return render_template('links.html', links=links)
 
 
 @main.before_request
