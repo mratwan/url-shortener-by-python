@@ -1,0 +1,5 @@
+__pycache__
+urls.db
+.vscode
+.idea
+.DS_Store
